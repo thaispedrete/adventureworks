@@ -1,0 +1,81 @@
+version: 2
+
+models:
+    - name: dim_person_address
+      description: "Tabela DIM com descrição dos endereços"
+      columns:
+          - name: addressid
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null
+    - name: dim_person_countryregion
+      description: "Tabela DIM com descrição dos países"
+      columns:
+          - name: countryregioncode
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null
+    - name: dim_person_stateprovince
+      description: "Tabela DIM com a descrição das províncias/estados/distritos"
+      columns:
+          - name: stateprovinceid
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null
+    - name: dim_production_product
+      description: "Tabela DIM com a descrição dos produtos"
+      columns:
+          - name: productid
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null
+    - name: dim_sales_creditcard
+      description: "Tabela DIM com a descrição dos meios de pagamento"
+      columns:
+          - name: creditcardid
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null
+    - name: dim_sales_customer
+      description: "Tabela DIM com descrição dos clientes"
+      columns:
+          - name: customerid
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null
+    - name: fact_sales_salesorderheadersalesreason
+      description: "Tabela FACT com os dados de razão de compra"
+      columns:
+          - name: salesorderid
+            description: "A chave primária original da tabela"
+            tests:
+              - not_null
+    - name: dim_sales_salesreason
+      description: "Tabela DIM com a descrição das razões"
+      columns:
+          - name: salesreasonid
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null
+    - name: fact_sales_salesorderdetail
+      description: "Tabela FACT com dados financeiros do pedido"
+      columns:
+          - name: salesorderid
+            description: "A chave primária original da tabela"
+            tests:
+              - not_null
+    - name: fact_sales_salesorderheader
+      description: "Tabela FACT com dados operacionais do pedido"
+      columns:
+          - name: salesorderid
+            description: "A chave primária original da tabela"
+            tests:
+              - unique
+              - not_null

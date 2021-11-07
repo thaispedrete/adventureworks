@@ -3,7 +3,6 @@ version: 2
 sources: 
     - name: pipelineEL
       tables:
-
         - name: person_address
           description: Tabela com informações de endereço (DIM)
           columns:
@@ -13,18 +12,18 @@ sources:
                 - unique
                 - not_null
         - name: person_countryregion
-          description: Tabela de informações país e região (DIM)
+          description: Tabela com informações de país e região (DIM)
           columns:
             - name: countryregioncode
-              description: código do país
+              description: código do país/região
               tests:
                 - unique
                 - not_null
-               - name: person_stateprovince
-          description: Tabela de informações do estado dos clientes (DIM)
+        - name: person_stateprovince
+          description: Tabela de informações do estado/províncias dos clientes (DIM)
           columns:
             - name: stateprovinceid
-              description: id do estado
+              description: id do estado/província
               tests:
                 - unique
                 - not_null
@@ -53,15 +52,14 @@ sources:
                 - unique
                 - not_null       
         - name: sales_salesorderdetail
-          description: Tabela de informações dos detalhes dos pedidos (DIM)
+          description: Tabela de informações dos detalhes dos pedidos (FACT)
           columns:
             - name: salesorderid
               description: id do pedido
               tests:
-                - unique
                 - not_null
         - name: sales_salesorderheader
-          description: Tabela de informações da descrição dos pedidos (DIM)
+          description: Tabela de informações da descrição dos pedidos (FACT)
           columns:
             - name: salesorderid
               description: id do pedido
@@ -69,14 +67,13 @@ sources:
                 - unique
                 - not_null          
         - name: sales_salesorderheadersalesreason
-          description: Tabela de informações da descrição e motivo dos pedidos (DIM)
+          description: Tabela de informações da descrição e motivo dos pedidos (FACT)
           columns:
             - name: salesorderid
               description: id do pedido
               tests:
-                - unique
                 - not_null  
-                - name: sales_salesreason
+        - name: sales_salesreason
           description: Tabela de informações dos motivos dos pedidos (DIM)
           columns:
             - name: salesreasonid
